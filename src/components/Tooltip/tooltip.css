@@ -1,0 +1,28 @@
+.tooltip .tooltip--content{
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border: 0;
+  border-radius: 6px;
+  padding: 5px 0;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltip--content::after {
+  content: "";
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+}
