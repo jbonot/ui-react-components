@@ -2,26 +2,32 @@ import React, { useCallback } from 'react';
 import './tooltip.css';
 import clsx from 'clsx';
 
-interface TooltipProps {
+export interface ITooltipProps {
   /**
    * Tooltip contents
    */
   label: string;
+
+  position?: 'top' | 'bottom' | 'left' | 'right'
 }
 
 export const Tooltip = ({
   label,
+  position = 'top',
   ...props
-}: TooltipProps) => {
+}: ITooltipProps) => {
 
   const getClasses = useCallback(() => {
     const classes = {
       'tooltip': true,
-      'tooltip--top': true
+      'tooltip--top': position === 'top',
+      'tooltip--bottom': position === 'bottom',
+      'tooltip--left': position === 'left',
+      'tooltip--right': position === 'right',
     };
 
     return clsx(classes);
-  }, []);
+  }, [position]);
   
   return (
     <div className={getClasses()}>

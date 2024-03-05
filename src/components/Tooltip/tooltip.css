@@ -26,3 +26,27 @@
   margin-left: -5px;
   border-width: 5px;
 }
+
+.tooltip--bottom .tooltip--content {
+  width: 120px;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+.tooltip--left .tooltip--content {
+  top: -5px;
+  right: 105%;
+}
+
+.tooltip--right .tooltip--content {
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip--top .tooltip--content {
+  width: 120px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
