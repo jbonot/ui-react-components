@@ -14,17 +14,14 @@
   bottom: 125%;
   left: 50%;
   margin-left: -60px;
+  width: 120px;
+  height: 1rem;
 }
 
 .tooltip .tooltip--content::after {
   content: "";
   border-style: solid;
-  border-color: #555 transparent transparent transparent;
   position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
 }
 
 .tooltip--bottom .tooltip--content {
@@ -34,9 +31,25 @@
   margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
 }
 
+.tooltip--bottom .tooltip--content::after {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-color: transparent transparent #555 transparent;
+}
+
 .tooltip--left .tooltip--content {
   top: -5px;
   right: 105%;
+}
+
+.tooltip--left .tooltip--content::after {
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-color: transparent transparent transparent #555;
 }
 
 .tooltip--right .tooltip--content {
@@ -44,9 +57,25 @@
   left: 105%;
 }
 
+.tooltip--right .tooltip--content::after {
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-color: transparent #555 transparent transparent;
+}
+
 .tooltip--top .tooltip--content {
   width: 120px;
   bottom: 100%;
   left: 50%;
   margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+.tooltip--top .tooltip--content::after {
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-color: #555 transparent transparent transparent;
 }
