@@ -11,8 +11,6 @@
   text-align: center;
   position: absolute;
   z-index: 1;
-  bottom: 125%;
-  left: 50%;
   margin-left: -60px;
   width: 120px;
   height: 1rem;
@@ -54,7 +52,7 @@
 
 .tooltip--right .tooltip--content {
   top: -5px;
-  left: 105%;
+  left: 175%; // to-do: calculate
 
   &::after {
     top: 50%;
