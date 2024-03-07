@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import './tooltip.scss';
 import clsx from 'clsx';
 
@@ -16,6 +16,15 @@ export const Tooltip = ({
   label,
   position = 'top',
 }: React.PropsWithChildren<ITooltipProps>) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleMouseEnter = useCallback(() => {
+    setIsVisible(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsVisible(false);
+  }, []);
 
   const getClasses = useCallback(() => {
     const classes = {
@@ -24,14 +33,21 @@ export const Tooltip = ({
       'tooltip--bottom': position === 'bottom',
       'tooltip--left': position === 'left',
       'tooltip--right': position === 'right',
+      'tooltip--visible': isVisible,
     };
 
     return clsx(classes);
-  }, [position]);
+  }, [position, isVisible]);
   
   return (
     <div className={getClasses()}>
-      {children}
+      <div
+        className="tooltip--target"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {children}
+      </div>
       <div className="tooltip--content">
         {label}
       </div>

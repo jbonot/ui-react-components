@@ -23,6 +23,17 @@
       border-style: solid;
       position: absolute;
     }
+
+    
+    visibility: hidden;
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &.tooltip--visible .tooltip--content {
+    visibility: visible;
+    opacity: 1;
   }
 }
 
