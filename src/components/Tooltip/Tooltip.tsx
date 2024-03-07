@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import './tooltip.scss';
 import clsx from 'clsx';
+import { useTimer } from '../../utils/useTimer';
 
 export interface ITooltipProps {
   /**
@@ -17,12 +18,18 @@ export const Tooltip = ({
   position = 'top',
 }: React.PropsWithChildren<ITooltipProps>) => {
   const [isVisible, setIsVisible] = useState(false);
+  
+  const timer = useTimer({
+    defaultDuration: 500,
+    onComplete: () => setIsVisible(true)
+  });
 
   const handleMouseEnter = useCallback(() => {
-    setIsVisible(true);
+      timer.start();
   }, []);
 
   const handleMouseLeave = useCallback(() => {
+    timer.cancel();
     setIsVisible(false);
   }, []);
 
