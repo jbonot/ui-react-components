@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import './tooltip.css';
+import './tooltip.scss';
 import clsx from 'clsx';
 
 export interface ITooltipProps {
