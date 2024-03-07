@@ -12,10 +12,10 @@ export interface ITooltipProps {
 }
 
 export const Tooltip = ({
+  children,
   label,
   position = 'top',
-  ...props
-}: ITooltipProps) => {
+}: React.PropsWithChildren<ITooltipProps>) => {
 
   const getClasses = useCallback(() => {
     const classes = {
@@ -31,6 +31,7 @@ export const Tooltip = ({
   
   return (
     <div className={getClasses()}>
+      {children}
       <div className="tooltip--content">
         {label}
       </div>

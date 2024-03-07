@@ -23,10 +23,7 @@ type Story = StoryObj<typeof meta>;
 
 const TooltipWithContext = (args : ITooltipProps) => {
   return (
-    <div style={{position: "relative"}}>
-      Hover over me
-      <Tooltip {...args} />
-    </div>
+      <Tooltip {...args}>Hover over me</Tooltip>
   );
 }
 
