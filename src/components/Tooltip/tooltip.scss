@@ -35,6 +35,10 @@
     visibility: visible;
     opacity: 1;
   }
+
+  .tooltip--target {
+    cursor: pointer;
+  }
 }
 
 .tooltip--bottom .tooltip--content {

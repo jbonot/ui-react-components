@@ -18,12 +18,12 @@ export const useTimer = ({
 
     const cancelTimer = useCallback(() => {
         clearTimeout(interval);
-    }, []);
+    }, [interval]);
 
     const startTimer = useCallback((duration: number = defaultDuration) => {
         if (onComplete) {
+            clearTimeout(interval);
             setInterval(setTimeout(onComplete, duration));
-            // clearTimeout(interval);
         }
     }, [defaultDuration, onComplete]);
 

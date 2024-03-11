@@ -18,7 +18,7 @@ export const Tooltip = ({
   position = 'top',
 }: React.PropsWithChildren<ITooltipProps>) => {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   const timer = useTimer({
     defaultDuration: 500,
     onComplete: () => setIsVisible(true)
@@ -26,12 +26,12 @@ export const Tooltip = ({
 
   const handleMouseEnter = useCallback(() => {
       timer.start();
-  }, []);
+  }, [timer]);
 
   const handleMouseLeave = useCallback(() => {
     timer.cancel();
     setIsVisible(false);
-  }, []);
+  }, [timer]);
 
   const getClasses = useCallback(() => {
     const classes = {
