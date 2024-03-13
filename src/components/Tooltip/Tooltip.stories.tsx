@@ -5,20 +5,17 @@ import { ITooltipProps, Tooltip } from './Tooltip'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-    title: 'Example/Tooltip',
+    title: 'Tooltip',
     component: Tooltip,
     parameters: {
-        // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
         layout: 'centered',
     },
-    // More on argTypes: https://storybook.js.org/docs/api/argtypes
     argTypes: {},
+    tags: ['autodocs'],
 } satisfies Meta<typeof Tooltip>
 
 export default meta
 type Story = StoryObj<typeof meta>
-
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 
 const TooltipWithContext = (args: ITooltipProps) => {
     return <Tooltip {...args}>Hover over me</Tooltip>
