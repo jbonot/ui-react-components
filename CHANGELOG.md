@@ -4,6 +4,7 @@
 
 ### Added
 
+-   `Toast` component
 -   `Tooltip` component
 -   `useTimer` hook
 

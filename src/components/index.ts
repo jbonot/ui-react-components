@@ -1,4 +1,5 @@
 export * from './Button'
 export * from './Header'
 export * from './Page'
+export * from './Toast'
 export * from './Tooltip'
