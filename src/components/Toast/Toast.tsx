@@ -1,8 +1,10 @@
 // sytem imports
 import React, { useCallback } from 'react'
 import clsx from 'clsx'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
+
+// internal imports
+import { Button } from '../Button'
 
 // component imports
 import './toast.scss'
@@ -38,10 +40,11 @@ export const Toast = ({
 
         return (
             <div className="flex flex-row-reverse">
-                <FontAwesomeIcon icon={faClose} onClick={onClose} />
+                <Button icon={faClose} onClick={onClose} />
             </div>
         )
-    }, [])
+    }, [onClose])
+
     return (
         <div className={getClasses()}>
             {renderHeader()}
