@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 // component imports
-import { IToastProps, Toast } from './Toast'
+import { IToastProps, Toast } from '.'
 
 const meta = {
     title: 'Toast',

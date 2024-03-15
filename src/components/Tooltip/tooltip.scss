@@ -69,7 +69,8 @@
 
 .tooltip--right .tooltip--content {
     top: -5px;
-    left: 175%; // to-do: calculate
+    left: 175%; /* to-do: calculate */
+
 
     &::after {
         top: 50%;

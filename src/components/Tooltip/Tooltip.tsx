@@ -1,16 +1,13 @@
+// system imports
 import React, { useCallback, useState } from 'react'
-import './tooltip.scss'
 import clsx from 'clsx'
+
+// internal imports
 import { useTimer } from '../../utils/useTimer'
 
-export interface ITooltipProps {
-    /**
-     * Tooltip contents
-     */
-    label: string
-
-    position?: 'top' | 'bottom' | 'left' | 'right'
-}
+// component imports
+import './tooltip.scss'
+import { ITooltipProps } from './Tooltip.types'
 
 export const Tooltip = ({
     children,
