@@ -4,15 +4,17 @@ import clsx from 'clsx'
 
 // component imports
 import './button.scss'
-import { IButtonProps } from './Button.types'
+import { ButtonProps } from './Button.types'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const Button = ({
+export const Button: React.FC<ButtonProps> = ({
+    backgroundColor = undefined,
+    icon = undefined,
+    label = undefined,
+    onClick = undefined,
     priority = 'tertiary',
     size = 'medium',
-    backgroundColor,
-    label,
-    ...props
-}: IButtonProps): JSX.Element => {
+}): JSX.Element => {
     const getClasses = useCallback(() => {
         const classes = {
             button: true,
@@ -20,18 +22,41 @@ export const Button = ({
             [`button--${priority}`]: true,
         }
 
-        return clsx(classes)
-    }, [])
+        const tailwind = ['flex', 'flex-row', 'cursor-pointer']
+
+        return clsx(classes, tailwind)
+    }, [size, priority])
 
     // Render - START
+    const renderLabel = useCallback(() => {
+        if (!label || label.trim() === '') {
+            return null
+        }
+
+        return <div className="button--label">{label}</div>
+    }, [label])
+
+    const renderIcon = useCallback(() => {
+        if (!icon) {
+            return null
+        }
+
+        return (
+            <div className="button--icon">
+                <FontAwesomeIcon icon={icon} />
+            </div>
+        )
+    }, [icon])
+
     return (
         <button
             type="button"
             className={getClasses()}
             style={{ backgroundColor: backgroundColor }}
-            {...props}
+            onClick={onClick}
         >
-            {label}
+            {renderIcon()}
+            {renderLabel()}
         </button>
     )
     // Render - END

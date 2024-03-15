@@ -3,9 +3,11 @@
     font-weight: 700;
     border: 0;
     border-radius: 1em;
-    cursor: pointer;
-    display: inline-block;
     line-height: 1;
+
+    .button--icon + .button--label {
+        margin-left: 12px;
+    }
 }
 .button--primary {
     color: white;

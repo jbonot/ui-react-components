@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 import { Button } from './Button'
 
@@ -17,6 +18,12 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+export const Default: Story = {
+    args: {
+        label: 'Button',
+    },
+}
+
 export const Primary: Story = {
     args: {
         priority: 'primary',
@@ -24,30 +31,9 @@ export const Primary: Story = {
     },
 }
 
-export const Secondary: Story = {
-    args: {
-        priority: 'secondary',
-        label: 'Button',
-    },
-}
-
-export const Tertiary: Story = {
+export const Icon: Story = {
     args: {
         priority: 'tertiary',
-        label: 'Button',
-    },
-}
-
-export const Large: Story = {
-    args: {
-        size: 'large',
-        label: 'Button',
-    },
-}
-
-export const Small: Story = {
-    args: {
-        size: 'small',
-        label: 'Button',
+        icon: faCoffee,
     },
 }
