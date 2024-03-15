@@ -14,8 +14,8 @@ npm run storybook
 
 ## Components
 
+-   `Button`
 -   `Tooltip`
--   `Button` (Storybook default)
 -   `Header` (Storybook default)
 -   `Page` (Storybook default)
 

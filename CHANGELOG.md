@@ -4,10 +4,10 @@
 
 ### Added
 
+-   `Button` component
 -   `Toast` component
 -   `Tooltip` component
 -   `useTimer` hook
 
--   `Button` component (Storybook default)
 -   `Header` component (Storybook default)
 -   `Page` component (Storybook default)
