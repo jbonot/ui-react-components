@@ -3,14 +3,6 @@
  */
 export interface IButtonProps {
     /**
-     * Specifies whether the button is styled as primary.
-     *
-     * @docType boolean
-     * @defaultValue `false`
-     */
-    primary?: boolean
-
-    /**
      * Background color of the button.
      * Accepts a string value representing a CSS color.
      *
@@ -18,15 +10,6 @@ export interface IButtonProps {
      * @defaultValue `undefined`
      */
     backgroundColor?: string
-
-    /**
-     * Size of the button.
-     * Can be one of: 'small', 'medium', 'large'.
-     *
-     * @docType 'small' | 'medium' | 'large'
-     * @defaultValue `'medium'`
-     */
-    size?: 'small' | 'medium' | 'large'
 
     /**
      * Label text displayed on the button.
@@ -42,4 +25,21 @@ export interface IButtonProps {
      * @defaultValue `undefined`
      */
     onClick?: () => void
+
+    /**
+     * Specifies the button's action priority.
+     *
+     * @docType boolean
+     * @defaultValue `tertiary`
+     */
+    priority?: 'primary' | 'secondary' | 'tertiary'
+
+    /**
+     * Size of the button.
+     * Can be one of: 'small', 'medium', 'large'.
+     *
+     * @docType 'small' | 'medium' | 'large'
+     * @defaultValue `'medium'`
+     */
+    size?: 'small' | 'medium' | 'large'
 }

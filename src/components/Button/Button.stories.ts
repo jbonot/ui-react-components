@@ -19,13 +19,21 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
     args: {
-        primary: true,
+        priority: 'primary',
         label: 'Button',
     },
 }
 
 export const Secondary: Story = {
     args: {
+        priority: 'secondary',
+        label: 'Button',
+    },
+}
+
+export const Tertiary: Story = {
+    args: {
+        priority: 'tertiary',
         label: 'Button',
     },
 }

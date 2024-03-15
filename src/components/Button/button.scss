@@ -15,6 +15,7 @@
         background-color: #278ccb;
     }
 }
+
 .button--secondary {
     color: #333;
     background-color: transparent;
@@ -24,6 +25,16 @@
         color: #333333c0;
     }
 }
+
+.button--tertiary {
+    color: #333;
+    background-color: transparent;
+
+    &:hover {
+        background-color: #3333330f;
+    }
+}
+
 .button--small {
     font-size: 12px;
     padding: 10px 16px;

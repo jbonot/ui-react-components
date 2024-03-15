@@ -7,18 +7,17 @@ import './button.scss'
 import { IButtonProps } from './Button.types'
 
 export const Button = ({
-    primary = false,
+    priority = 'tertiary',
     size = 'medium',
     backgroundColor,
     label,
     ...props
 }: IButtonProps): JSX.Element => {
     const getClasses = useCallback(() => {
-        const mode = primary ? 'primary' : 'secondary'
         const classes = {
             button: true,
             [`button--${size}`]: true,
-            [`button--${mode}`]: true,
+            [`button--${priority}`]: true,
         }
 
         return clsx(classes)
