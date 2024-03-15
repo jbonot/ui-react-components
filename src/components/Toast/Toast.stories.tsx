@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 // component imports
-import { Toast } from './Toast'
+import { IToastProps, Toast } from './Toast'
 
 const meta = {
     title: 'Toast',
@@ -18,6 +18,12 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+const DefaultTemplate = (args: IToastProps) => {
+    return <Toast {...args}>I am a toast</Toast>
+}
 export const Default: Story = {
-    args: {},
+    args: {
+        onClose: () => {},
+    },
+    render: DefaultTemplate,
 }
