@@ -14,13 +14,16 @@ export const Tooltip = ({
     label,
     position = 'top',
 }: React.PropsWithChildren<ITooltipProps>) => {
+    // Vars & States - START
     const [isVisible, setIsVisible] = useState(false)
 
     const timer = useTimer({
         defaultDuration: 500,
         onComplete: () => setIsVisible(true),
     })
+    // Vars & States - END
 
+    // Methods & Handlers - START
     const handleMouseEnter = useCallback(() => {
         timer.start()
     }, [timer])
@@ -29,7 +32,9 @@ export const Tooltip = ({
         timer.cancel()
         setIsVisible(false)
     }, [timer])
+    // Methods & Handlers - END
 
+    // ClassNames & Styles - START
     const getClasses = useCallback(() => {
         const classes = {
             tooltip: true,
@@ -42,7 +47,9 @@ export const Tooltip = ({
 
         return clsx(classes)
     }, [position, isVisible])
+    // ClassNames & Styles - END
 
+    // Render - START
     return (
         <div className={getClasses()}>
             <div
@@ -55,4 +62,5 @@ export const Tooltip = ({
             <div className="tooltip--content">{label}</div>
         </div>
     )
+    // Render - END
 }

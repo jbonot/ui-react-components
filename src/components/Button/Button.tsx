@@ -15,6 +15,7 @@ export const Button: React.FC<ButtonProps> = ({
     priority = 'tertiary',
     size = 'medium',
 }): JSX.Element => {
+    // ClassNames & Styles - START
     const getClasses = useCallback(() => {
         const classes = {
             button: true,
@@ -26,6 +27,7 @@ export const Button: React.FC<ButtonProps> = ({
 
         return clsx(classes, tailwind)
     }, [size, priority])
+    // ClassNames & Styles - END
 
     // Render - START
     const renderLabel = useCallback(() => {

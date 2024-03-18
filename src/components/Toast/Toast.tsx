@@ -14,6 +14,7 @@ export const Toast = ({
     children,
     onClose,
 }: React.PropsWithChildren<IToastProps>) => {
+    // ClassNames & Styles - START
     const getClasses = useCallback(() => {
         const classes = {
             toast: true,
@@ -21,6 +22,7 @@ export const Toast = ({
 
         return clsx(classes)
     }, [])
+    // ClassNames & Styles - END
 
     // Render - START
     const renderHeader = useCallback(() => {
