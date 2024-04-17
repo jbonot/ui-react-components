@@ -10,14 +10,14 @@ export const useStateList = <T>(value: T[]) => {
     const deleteItemByIndex = useCallback((index: number) => {
         setItems((currentItems) => {
             currentItems.splice(index, 1)
-            return currentItems
+            return [...currentItems]
         })
     }, [])
 
     const updateItem = useCallback((index: number, item: T) => {
         setItems((currentItems) => {
             currentItems[index] = item
-            return currentItems
+            return [...currentItems]
         })
     }, [])
 
