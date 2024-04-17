@@ -1,23 +1,29 @@
+// system imports
+import { useCallback, useEffect } from 'react'
+
+// internal imports
 import { useStateObject } from '../../utils/useStateObject'
 import { useStateList } from '../../utils/useStateList'
-import { useCallback, useEffect } from 'react'
 
 interface IListBuilderHeader {
     key: string
     label?: string
 }
 
-interface IListBuilderProps<T, S> {
+interface IListBuilderProps<T> {
     value?: T[]
     onChange?: (items: T[]) => void
     headers?: IListBuilderHeader[]
 }
 
-export const ListBuilder = <T extends { [key: string]: any }, S>({
+/**
+ * Creates and modifies an object list
+ */
+export const ListBuilder = <T extends { [key: string]: any }>({
     headers,
     onChange,
     value,
-}: IListBuilderProps<T, S>) => {
+}: IListBuilderProps<T>) => {
     const lazyValue = useStateList(value ?? [])
     const formData = useStateObject<T>({} as any as T)
 
