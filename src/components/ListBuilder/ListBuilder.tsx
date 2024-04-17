@@ -1,3 +1,4 @@
+import { useStateObject } from '../../utils/useStateObject'
 import { useStateList } from '../../utils/useStateList'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
@@ -18,17 +19,17 @@ export const ListBuilder = <T extends { [key: string]: any }, S>({
     value,
 }: IListBuilderProps<T, S>) => {
     const lazyValue = useStateList(value ?? [])
-    const [formData, setFormData] = useState<T>({} as any as T)
+    const formData = useStateObject<T>({} as any as T)
 
     const handleOnAddButtonClick = useCallback(() => {
         const item = headers?.reduce((acc, curr) => {
             return {
                 ...acc,
-                [curr.key]: formData[curr.key],
+                [curr.key]: formData.value[curr.key],
             }
         }, {}) as any as T
         lazyValue.addItem(item)
-        setFormData({} as any as T)
+        formData.reset()
     }, [formData, headers, lazyValue])
 
     useEffect(() => {
@@ -68,12 +69,12 @@ export const ListBuilder = <T extends { [key: string]: any }, S>({
                         <td key={header.key}>
                             <input
                                 type="text"
-                                value={formData[header.key] ?? ''}
+                                value={formData.value[header.key] ?? ''}
                                 onChange={(ev) => {
-                                    setFormData((val) => ({
-                                        ...val,
-                                        [header.key]: ev.target.value,
-                                    }))
+                                    formData.setProperty(
+                                        header.key,
+                                        ev.target.value
+                                    )
                                 }}
                             />
                         </td>
