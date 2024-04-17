@@ -1,5 +1,5 @@
 import { useStateList } from '../../utils/useStateList'
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 interface IListBuilderHeader {
     key: string
@@ -18,18 +18,18 @@ export const ListBuilder = <T extends { [key: string]: any }, S>({
     value,
 }: IListBuilderProps<T, S>) => {
     const lazyValue = useStateList(value ?? [])
-    const formValues = useRef<T>({} as any as T)
+    const [formData, setFormData] = useState<T>({} as any as T)
 
     const handleOnAddButtonClick = useCallback(() => {
         const item = headers?.reduce((acc, curr) => {
             return {
                 ...acc,
-                [curr.key]: formValues.current[curr.key],
+                [curr.key]: formData[curr.key],
             }
         }, {}) as any as T
         lazyValue.addItem(item)
-        formValues.current = {} as any as T
-    }, [headers, lazyValue])
+        setFormData({} as any as T)
+    }, [formData, headers, lazyValue])
 
     useEffect(() => {
         onChange?.(lazyValue.items)
@@ -68,11 +68,12 @@ export const ListBuilder = <T extends { [key: string]: any }, S>({
                         <td key={header.key}>
                             <input
                                 type="text"
+                                value={formData[header.key] ?? ''}
                                 onChange={(ev) => {
-                                    formValues.current = {
-                                        ...formValues.current,
+                                    setFormData((val) => ({
+                                        ...val,
                                         [header.key]: ev.target.value,
-                                    }
+                                    }))
                                 }}
                             />
                         </td>
@@ -83,7 +84,7 @@ export const ListBuilder = <T extends { [key: string]: any }, S>({
                 </td>
             </tr>
         )
-    }, [handleOnAddButtonClick, headers])
+    }, [formData, handleOnAddButtonClick, headers])
 
     return (
         <table>
