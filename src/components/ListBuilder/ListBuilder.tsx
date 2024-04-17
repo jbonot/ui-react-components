@@ -1,6 +1,6 @@
 import { useStateObject } from '../../utils/useStateObject'
 import { useStateList } from '../../utils/useStateList'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 
 interface IListBuilderHeader {
     key: string
@@ -48,17 +48,23 @@ export const ListBuilder = <T extends { [key: string]: any }, S>({
     }, [headers])
 
     const renderListItem = useCallback(
-        (item: T) => {
+        (item: T, index: number) => {
             return (
                 <tr>
                     {headers?.map((header) => {
                         return <td key={header.key}>{item[header.key]}</td>
                     })}
-                    <td>&nbsp;</td>
+                    <td>
+                        <button
+                            onClick={() => lazyValue.deleteItemByIndex(index)}
+                        >
+                            delete
+                        </button>
+                    </td>
                 </tr>
             )
         },
-        [headers]
+        [headers, lazyValue]
     )
 
     const renderTableInput = useCallback(() => {
