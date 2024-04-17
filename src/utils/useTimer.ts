@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useRef } from 'react'
 
 interface IUseTimerConfig {
     defaultDuration?: number
@@ -14,19 +14,17 @@ export const useTimer = ({
     defaultDuration = 1000,
     onComplete,
 }: IUseTimerConfig): IUseTimerResult => {
-    const [interval, setInterval] = useState<NodeJS.Timeout | undefined>(
-        undefined
-    )
+    const interval = useRef<NodeJS.Timeout | undefined>(undefined)
 
     const cancelTimer = useCallback(() => {
-        clearTimeout(interval)
-    }, [interval])
+        clearTimeout(interval.current)
+    }, [])
 
     const startTimer = useCallback(
         (duration: number = defaultDuration) => {
             if (onComplete) {
-                clearTimeout(interval)
-                setInterval(setTimeout(onComplete, duration))
+                clearTimeout(interval.current)
+                interval.current = setTimeout(onComplete, duration)
             }
         },
         [defaultDuration, onComplete]
@@ -37,5 +35,5 @@ export const useTimer = ({
             start: startTimer,
             cancel: cancelTimer,
         }
-    }, [startTimer])
+    }, [cancelTimer, startTimer])
 }
