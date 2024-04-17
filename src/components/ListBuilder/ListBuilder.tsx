@@ -8,6 +8,7 @@ import { useStateList } from '../../utils/useStateList'
 interface IListBuilderHeader {
     key: string
     label?: string
+    type?: 'text' | 'number'
 }
 
 interface IListBuilderProps<T> {
@@ -80,7 +81,7 @@ export const ListBuilder = <T extends { [key: string]: any }>({
                     return (
                         <td key={header.key}>
                             <input
-                                type="text"
+                                type={header.type ?? 'text'}
                                 value={formData.value[header.key] ?? ''}
                                 onChange={(ev) => {
                                     formData.setProperty(

@@ -20,10 +20,11 @@ export const Default: Story = {
         value: [],
         headers: [
             {
-                key: 'First Name',
+                key: 'Item',
             },
             {
-                key: 'Last Name',
+                key: 'Quantity',
+                type: 'number',
             },
         ],
     },
